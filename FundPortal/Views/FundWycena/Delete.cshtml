@@ -1,0 +1,56 @@
+﻿@model Repozytorium.Models.FundWycena
+
+@{
+    ViewBag.Title = "Usuń wycenę";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Usuń wycenę</h2>
+</div>
+
+<h3>Czy chcesz usunąć wycenę?</h3>
+
+<div class="row">
+    <div class="col-md-2">
+        @{  Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Fund.FundName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Fund.FundName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FundWycenaDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FundWycenaDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FundWycenaCena)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FundWycenaCena)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> 
+                @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,129 @@
+﻿
+@model PagedList.IPagedList<Repozytorium.Models.FundWycena>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Wycena-Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-header">
+    <h2>Wycena</h2>
+</div>
+<div class="col-md-2">
+    @{  Html.RenderAction("AdminMenu", "AdminNav");}
+</div>
+<div class="col-md-10">
+
+    @using (Html.BeginForm("Index", "FundWycena", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-md-3">
+                Data wyceny od:
+                <input class="text-box"
+                       id="wycenaOd" name="wycenaOd" type="datetime" />
+            </div>
+            <div class="col-md-3">
+                Data wyceny do:
+                <input class="text-box"
+                       id="wycenaDo" name="wycenaDo" type="datetime" />
+            </div>
+            <div class="col-md-4">
+
+                @Html.DropDownList("fundName", new SelectList(ViewBag.FundName), null, new { @class = "btn btn-default dropdown-toggle", type = "button" })
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    }
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                Nazwa funduszu
+            </th>
+            <th>
+                Symbol funduszu
+            </th>
+            <th>
+                @Html.ActionLink("Data wyceny", "Index", new { sortOrder = ViewBag.DateSortParm, wycenaOd = ViewBag.CurrentWycenaOd, wycenaDo = ViewBag.CurrentWycenDo, fundName = ViewBag.CurrentFundName })
+            </th>
+            <th>
+                @Html.ActionLink("Wycena", "Index", new { sortOrder = ViewBag.CenaSortParm, wycenaOd = ViewBag.CurrentWycenaOd, wycenaDo = ViewBag.CurrentWycenDo, fundName = ViewBag.CurrentFundName })
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fund.FundName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fund.FundSymbol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FundWycenaDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FundWycenaCena)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.FundWycenaID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.FundWycenaID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.FundWycenaID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, wycenaOd = ViewBag.CurrentWycenaOd, wycenaDo = ViewBag.CurrentWycenDo, fundName = ViewBag.CurrentFundName }))
+
+
+</div>
+   
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script type="text/javascript">
+
+        $(function () {
+
+            $('#wycenaOd').datetimepicker({
+
+                defaultDate: '@ViewBag.CurrentWycenaOd',
+
+                format: 'YYYY-MM-DD',
+
+                showClose: true,
+
+                showClear: true,
+
+                toolbarPlacement: 'top'
+              
+
+            });
+
+            $('#wycenaDo').datetimepicker({
+
+                defaultDate: '@ViewBag.CurrentWycenDo',
+
+                format: 'YYYY-MM-DD',
+
+                showClose: true,
+
+                showClear: true,
+
+                toolbarPlacement: 'top'
+
+            });
+        });
+
+        </script>
+    }

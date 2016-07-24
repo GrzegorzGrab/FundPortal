@@ -1,0 +1,54 @@
+﻿@model IDictionary<string, decimal>
+
+<div class="container graph-gg">
+    <div class="row">
+        <div class="col-lg-4">
+            <div id="graph" style="height: 350px; width:350px"></div>
+        </div>
+        <div class="col-lg-8">
+            <h3>Podsumowanie</h3>
+            @{Html.RenderAction("FundsSummaryGraph", "FundsSummary");}
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/morris")
+    <script type="text/javascript">
+
+        var integer = @Html.Raw(Json.Encode(Model));
+
+        //inicjacja str przekazanego później do Morris.Donut jako wartości data
+        var str="";
+
+        //przekształcenie jsona w str
+        for (k in integer){
+            str += "{value: " + integer[k] + ",label: '" + k + "'},";
+        }
+
+        //ucięcie ostatniego przecinka
+        str = str.substring(0, str.length - 1);
+
+        //dodanie nawiasów klamrowych
+        str = "[" + str + "]";
+
+        //rysowanie wykresu
+            Morris.Donut({
+
+                element: 'graph',
+
+                data:
+                    //dzięki eval odczytanie str jako wartości
+               eval(str)
+
+                ,
+               //colors: ['red', 'green', 'yellow','blue'],
+                formatter: function (x) { return x + "%" }
+            }).on('click', function (i, row) {
+                console.log(i, row);
+            });
+
+    </script>
+}

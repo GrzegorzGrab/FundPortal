@@ -1,0 +1,171 @@
+﻿@model PagedList.IPagedList<Repozytorium.Models.FundZakup>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Kupione jednostki</h2>
+</div>
+
+@if (TempData["CreateZakupSuccess"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["CreateZakupSuccess"]</div>
+}
+
+@if (TempData["EditZakupSuccess"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["EditZakupSuccess"]</div>
+}
+@if (User.Identity.IsAuthenticated) {
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+}
+<p>
+    @using (Html.BeginForm("Index", "FundZakup", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.Label("NazwaFunduszu", "Fundusz:", new { @class = "control-label col-md-3" })
+            </div>
+        </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.Label("ZakupOd","Zakup od:", new { @class = "control-label col-md-3" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.Label("ZakupDd", "Zakup do:", new { @class = "control-label col-md-3" })
+                </div>
+            </div>
+        <div class="col-md-2">
+            <input type="submit" value="Search" class="btn btn-default"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.DropDownList("fundName", new SelectList(ViewBag.FundName),"", new { @class = "btn btn-default dropdown-toggle", type = "button" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <input class="form-control" id="zakupDo" name="zakupDo" type="datetime">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <input class="form-control" id="zakupOd" name="zakupOd" type="datetime">
+            </div>
+        </div>
+    </div>
+}  
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nazwa funduszu
+        </th>
+        <th>
+            Ilość kupionych jednostek
+        </th>
+        <th>
+            @Html.ActionLink("Cena zakupu", "Index", new { sortOrder = ViewBag.CenaSortParm, zakupOd = ViewBag.CurrentZakupOd, zakupDo = ViewBag.CurrentZakupDo, fundName = ViewBag.CurrentFundName })
+        </th>
+        <th>
+            @Html.ActionLink("Data zakupu", "Index", new { sortOrder = ViewBag.DateSortParm, zakupOd = ViewBag.CurrentZakupOd, zakupDo = ViewBag.CurrentZakupDo, fundName = ViewBag.CurrentFundName })
+        </th>
+        <th>
+            Typ opłaty
+        </th>
+        <th>
+            Wartość inwerstycji
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fund.FundName)
+            <a href="@Url.Action("FundWycenaGraph","FundsSummary", new { fundName = item.Fund.FundName })" title="Notowania">
+                <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+            </a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FundZakupIlosc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FundZakupCena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FundZakupDataZakupu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>item.FundOplataTyp.FundOplataTypNazwa)
+        </td>
+        <td>
+           @Html.DisplayFor(modelItem=>item.WartoscZakupu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FundZakupID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FundZakupID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FundZakupID })
+        </td>
+    </tr>
+}
+
+</table>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, wycenaOd = ViewBag.CurrentWycenaOd, wycenaDo = ViewBag.CurrentWycenDo, fundName = ViewBag.CurrentFundName }))
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        $(function () {
+
+            $('#zakupOd').datetimepicker({
+
+                defaultDate: '@ViewBag.CurrentZakupOd',
+
+                format: 'YYYY-MM-DD',
+
+                showClose: true,
+
+                showClear: true,
+
+                toolbarPlacement: 'top'
+
+            });
+
+            $('#zakupDo').datetimepicker({
+
+                defaultDate: '@ViewBag.CurrentZakupDo',
+
+                format: 'YYYY-MM-DD',
+
+                showClose: true,
+
+                showClear: true,
+
+                toolbarPlacement: 'top'
+
+            });
+
+
+
+        });
+
+    </script>
+}

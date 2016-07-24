@@ -1,0 +1,28 @@
+﻿@using FundPortal.Models
+@model IEnumerable<FundsSummaryViewModel>
+
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundSummaryNazwa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundSummarySumJednostek)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundSummaryAvgPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundSummaryMinPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundSummaryMaxPrice)
+                    </td>
+
+                </tr>
+            }
+
+ 

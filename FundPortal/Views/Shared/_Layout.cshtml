@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - FundPortal Application</title>
+
+    <!--Bootstrap Core CSS-->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet"/>
+    
+    <!--Custom CSS-->
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <!--Fonty-->
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/morris.css" />
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.flot.min.js"></script>
+    <script src="~/Scripts/raphael-min.js"></script>
+    <script src="~/Scripts/morris.js"></script>
+</head>
+<body>
+       <!--navigationUserNotAuthorized-->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("FundPortal", "Index", "Home", null, new { @class = "navbar-brand page-scroll" })
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Strona główna <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="page-scroll" href="~/#page-top">Strona główna</a></li>
+                                <li><a class="page-scroll" href="~/#informationAboutSite">O stronie</a></li>
+                                <li><a class="page-scroll" href="~/#informationAboutSite">O funduszach inwestycyjnych</a></li>
+                                <li><a class="page-scroll" href="~/#contact">Zostaw wiadomość</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li>@Html.ActionLink("Notowania funduszy", "FundWycenaGraph", "FundsSummary")</li>
+                                <li>@Html.ActionLink("Fundusze inwestycyjne", "Index", "FundList")</li>
+                            </ul>
+                        </li>
+
+                        <!--GG: Dodanie warunku if na sprawdzenie czy uzytkownik jest zalogowany-->
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inwestycje <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Podsumowanie", "Index", "FundsSummary")</li>
+                                    <li>@Html.ActionLink("Rejestracja zakupu", "Index", "FundZakup") </li>
+                                    <li>@Html.ActionLink("Notowania funduszy", "FundWycenaGraph", "FundsSummary")</li>
+                                    <li>@Html.ActionLink("Fundusze inwestycyjne", "Index", "FundList")</li>
+                                    <!--
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                    -->
+                                </ul>
+                            </li>
+                        }
+                        <li>
+                            <a class="page-scroll" href="~/Home/About">About</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="~/Home/Contact">Contact</a>
+                        </li>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <li>@Html.ActionLink("Administracja", "AdminMain", "AdminNav")</li>
+                        }
+                        <li>
+                            @Html.Partial("_LoginPartial")
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    <!--
+    GG: wyciągnięcie RenderBody do </footer> z poniższego contenera
+            <div class="container body-content">
+        </div>
+    -->
+    
+        @RenderBody()
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - FundPortal Application</p>
+        </footer>
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datetime")
+    @Scripts.Render("~/Scripts/classie.js")
+    @Scripts.Render("~/Scripts/cbpAnimatedHeader.js")
+    @RenderSection("scripts", required: false)
+
+   
+    
+</body>
+</html>
+

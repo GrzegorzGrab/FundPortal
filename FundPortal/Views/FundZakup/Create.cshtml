@@ -1,0 +1,130 @@
+﻿@model Repozytorium.Models.FundZakup
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-header">
+    <h2>Rejestracja zakupu</h2>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FundZakupIlosc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FundZakupIlosc, new { htmlattributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FundZakupIlosc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FundZakupCena, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FundZakupCena, new { htmlattributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FundZakupCena)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FundID, "Nazwa funduszu", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("FundID", null, new { @class = "btn btn-default dropdown-toggle", type = "button" })
+                @Html.ValidationMessageFor(model => model.FundID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FundZakupDataZakupu, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FundZakupDataZakupu, new { htmlattributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FundZakupDataZakupu)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FundOplataTyp, "Typ opłaty", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model=>model.FundOplataTypID,  ( IEnumerable<SelectListItem>) ViewBag.FundOplataTypID,"", new { @class = "btn btn-default dropdown-toggle", type = "button" })
+                @Html.ValidationMessageFor(model => model.FundOplataTyp)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FundOplataWysokosc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FundOplataWysokosc, new { htmlattributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FundOplataWysokosc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="reset" value="Anuluj" class="btn btn-default" />
+                @Html.ActionLink("Powrót do listy", "Index", new { }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#FundZakupDataZakupu').datetimepicker({
+
+            defaultDate: '@ViewBag.CurrentZakupOd',
+
+            format: 'YYYY-MM-DD',
+
+            showClose: true,
+
+            showClear: true,
+
+            toolbarPlacement: 'top'
+
+        });
+    });
+</script>
+
+    <script src="~/Scripts/globalize/globalize.js"></script>
+    <script src="~/Scripts/globalize/cultures/globalize.culture.@(System.Threading.Thread.CurrentThread.CurrentCulture.Name).js"></script>
+    <script>
+
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) ||
+            !isNaN(Globalize.parseFloat(value));
+    }
+    $(document).ready(function () {
+        Globalize.culture('@(System.Threading.Thread.CurrentThread.CurrentCulture.Name)');
+    });
+    </script>
+    <script>
+    jQuery.extend(jQuery.validator.methods, {
+        range: function (value, element, param) {
+            //Use the Globalization plugin to parse the value
+            var val = Globalize.parseFloat(value);
+            return this.optional(element) || (
+                val >= param[0] && val <= param[1]);
+        }
+    });
+    $.validator.methods.date = function (value, element) {
+        return this.optional(element) ||
+            Globalize.parseDate(value) ||
+            Globalize.parseDate(value, "yyyy-MM-dd");
+    }
+    </script>
+
+
+}

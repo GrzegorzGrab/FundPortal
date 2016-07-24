@@ -1,0 +1,80 @@
+﻿@model Repozytorium.Models.FundTowarzystwo
+
+@{
+    ViewBag.Title = "Nowe towarzystwo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Dodaj nowe towarzystwo</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        @{ Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundTowarzystwoNazwa, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FundTowarzystwoNazwa)
+                        @Html.ValidationMessageFor(model => model.FundTowarzystwoNazwa)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundTowarzystwoAdresUrl, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FundTowarzystwoAdresUrl)
+                        @Html.ValidationMessageFor(model => model.FundTowarzystwoAdresUrl)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundTowarzystwoDataDodania, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FundTowarzystwoDataDodania)
+                        @Html.ValidationMessageFor(model => model.FundTowarzystwoDataDodania)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                        @Html.ActionLink("Powrót do listy", "Index", new { }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        $(function () {
+
+            $('#FundTowarzystwoDataDodania').datetimepicker({
+
+                
+
+                format: 'YYYY-MM-DD',
+
+                showClose: true,
+
+                showClear: true,
+
+                toolbarPlacement: 'top'
+
+            });
+        });
+
+    </script>
+}

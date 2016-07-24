@@ -1,0 +1,175 @@
+﻿@model Repozytorium.Models.Fund
+
+@{
+    ViewBag.Title = Model.FundName + "-edycja";
+}
+
+<<div class="page-header">
+    <h2>Edycja funduszu</h2>
+</div>
+
+@if (TempData["FundSymbolExists"] != null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["FundSymbolExists"]</div>
+}
+
+@if(TempData["FundNameExists"] != null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["FundNameExists"]</div>
+}
+<div class="row">
+    <div class="col-md-2">
+        @{  Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.FundID)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundName, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FundName, new { htmlattributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FundName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundSymbol, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FundSymbol, new { htmlattributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FundSymbol)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundTyp.FundTypName, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("FundTypID", null, new { @class = "btn btn-default dropdown-toggle", type = "button" })
+                        @Html.ValidationMessageFor(model => model.FundTyp.FundTypName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundTowarzystwo.FundTowarzystwoNazwa, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("FundTowarzystwoID", null, new { @class = "btn btn-default dropdown-toggle", type = "button" })
+                        @Html.ValidationMessageFor(model => model.FundTowarzystwo.FundTowarzystwoNazwa)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundWaluta.FundWalutaID, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("FundWalutaID", null, new { @class = "btn btn-default dropdown-toggle", type = "button" })
+                        @Html.ValidationMessageFor(model => model.FundWaluta.FundWalutaID)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundZarzadzajacy, new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.FundZarzadzajacy,  new { htmlattributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FundZarzadzajacy)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundDataUruchomienia, new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.FundDataUruchomienia, new { htmlattributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FundDataUruchomienia)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundPierwszajWplata, new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.FundPierwszajWplata,  new { htmlattributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FundPierwszajWplata)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundNastepnaWplata, new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.FundNastepnaWplata,  new { htmlattributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FundNastepnaWplata)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundPolityka, new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.FundPolityka,  new { htmlattributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FundPolityka)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                        <input type="reset" value="Anuluj" class="btn btn-default" />
+                        @Html.ActionLink("Back to List", "Index", new { },new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+
+        $(function () {
+
+            $('#FundDataUruchomienia').datetimepicker({
+
+                defaultDate: new Date(),
+
+                format: 'YYYY-MM-DD',
+
+                showClose: true,
+
+                showClear: true,
+
+                toolbarPlacement: 'top'
+
+            });
+        });
+</script>
+
+<script src="~/Scripts/globalize/globalize.js"></script>
+<script src="~/Scripts/globalize/cultures/globalize.culture.@(System.Threading.Thread.CurrentThread.CurrentCulture.Name).js"></script>
+<script>
+
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) ||
+            !isNaN(Globalize.parseFloat(value));
+    }
+    $(document).ready(function () {
+        Globalize.culture('@(System.Threading.Thread.CurrentThread.CurrentCulture.Name)');
+    });
+</script>
+<script>
+    jQuery.extend(jQuery.validator.methods, {
+        range: function (value, element, param) {
+            //Use the Globalization plugin to parse the value
+            var val = Globalize.parseFloat(value);
+            return this.optional(element) || (
+                val >= param[0] && val <= param[1]);
+        }
+    });
+    $.validator.methods.date = function (value, element) {
+        return this.optional(element) ||
+            Globalize.parseDate(value) ||
+            Globalize.parseDate(value, "yyyy-MM-dd");
+    }
+</script>
+}

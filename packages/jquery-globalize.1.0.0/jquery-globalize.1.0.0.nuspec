@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>jquery-globalize</id>
+    <version>1.0.0</version>
+    <title>Globalize</title>
+    <authors>The jQuery Project</authors>
+    <owners>The jQuery Project</owners>
+    <licenseUrl>http://jquery.org/license</licenseUrl>
+    <projectUrl>https://github.com/jquery/globalize#readme</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Globalize provides number formatting and parsing, date and time formatting and parsing, currency formatting, message formatting (ICU message format pattern), and plural support.
+Globalize is based on the Unicode Consortium's Common Locale Data Repository (CLDR), the largest and most extensive standard repository of locale data available. CLDR is constantly updated and is used by many large applications and operating systems, so you'll always have access to the most accurate and up-to-date locale data.</description>
+    <summary>A JavaScript library for internationalization and localization that leverages the official Unicode CLDR JSON data.</summary>
+    <releaseNotes />
+    <tags>utility globalization internationalization multilingualization localization g11n i18n m17n L10n localize format parse translate strings numbers dates times calendars cultures languages locales</tags>
+    <dependencies>
+      <dependency id="cldrjs" version="0.4.1" />
+    </dependencies>
+  </metadata>
+</package>

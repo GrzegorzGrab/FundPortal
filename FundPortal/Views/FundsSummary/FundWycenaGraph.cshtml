@@ -1,0 +1,143 @@
+﻿@using Repozytorium.Models
+@model string
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    AjaxOptions ajaxOpts = new AjaxOptions
+    {
+        UpdateTargetId = "tableBody",
+       // Url = Url.Action("FundsSummaryGraphGGTEST"),
+        LoadingElementId = "loading",
+        LoadingElementDuration = 1000,
+        //Confirm = "Czy chcesz pobrać nowe dane?",
+        Url = Url.Action("FundWycenaGraphJson"),
+        OnSuccess = "wykres"
+    };
+}
+
+<div class="page-header">
+    <h2>Notowania</h2>
+</div>
+
+<div class="container">
+    <div id="loading" class="load" style="display:none">
+        <p>Ładowanie danych...</p>
+    </div>
+
+    @using (Ajax.BeginForm(ajaxOpts))
+    {
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Nazwa funduszu:")
+                @Html.DropDownList("fundName", new SelectList(ViewBag.FundsName), null, new { @class = "btn btn-default dropdown-toggle", type = "button" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Label("Notowania od:")
+                <input class="form-control" id="wycenaOd" name="startDate" type="datetime" />
+            </div>
+            <div class="col-md-3">
+                @Html.Label("Notowania do:")
+                <input class="form-control" id="wycenaDo" name="endDate" type="datetime" />
+            </div>
+            <div class="col-md2">
+                <button class="btn btn-default" type="submit">Szukaj</button>
+            </div>
+        </div>
+    }
+
+    <!--
+    <div>
+        @foreach (string fundName in ViewBag.FundsName)
+        {
+            <div class="ajaxLink">
+                @Ajax.ActionLink(@fundName, "FundsSummaryGraphGGTEST",
+                    new {fundName=@fundName},
+                    new AjaxOptions
+                    {
+                        Url=Url.Action("FundWycenaGraphJson",new { fundName=@fundName}),
+                        OnSuccess="wykres"
+                    }
+               )
+            </div>
+        }
+    </div>
+        -->
+
+    <div id="line-example"></div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        $(function () {
+            var startDate = new Date();
+            startDate.setDate(startDate.getDate() - 10);
+            $('#wycenaOd').datetimepicker({
+
+                defaultDate: startDate,
+
+                format: 'YYYY-MM-DD',
+
+                showClose: true,
+
+                showClear: true,
+
+                toolbarPlacement: 'top'
+
+            });
+
+            $('#wycenaDo').datetimepicker({
+
+                defaultDate: new Date(),
+
+                format: 'YYYY-MM-DD',
+
+                showClose: true,
+
+                showClear: true,
+
+                toolbarPlacement: 'top'
+
+            });
+        });
+
+    </script>
+
+<script type="text/javascript">
+
+    function wykres(data) {
+        $('#line-example').empty().removeClass();
+        if (data.length>0){
+
+            var dane="[";
+            for (var i = 0; i < data.length; i++) {
+                var fundWycen=data[i];
+                dane = dane + "{ y: '" + fundWycen.FundWycenaDate  + "', b: " + fundWycen.FundWycenaCena + "},";
+            }
+
+            //ucięcie ostatniego przecinka
+            dane = dane.substring(0, dane.length - 1);
+
+            dane = dane + "]";
+            var fundName = $('#fundName :selected').text();
+            //alert(fundName);
+           //alert(dane);
+            Morris.Line({
+                element: 'line-example',
+                data: eval(dane),
+                xkey: 'y',
+                ykeys: ['b'],
+                labels: [fundName],
+                pointSize:0
+            });
+        }
+        else {
+            //   alert("PustyJson");
+            $('#line-example').addClass('alert alert-info').text('Dla podanego okresu nie ma żadnych notowań.');
+        }
+       }
+</script>
+}

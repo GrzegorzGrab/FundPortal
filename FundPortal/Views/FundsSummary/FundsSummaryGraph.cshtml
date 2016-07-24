@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FundPortal.Models.FundsSummaryViewModel>
+
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundSummaryNazwa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundSummarySumJednostek)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundSummaryAvgPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundSummaryMinPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundSummaryMaxPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.CurrentPrice)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundSummaryNazwa)
+                        <a href="@Url.Action("FundWycenaGraph", "FundsSummary", new { fundName = item.FundSummaryNazwa })" title="Notowania">
+                            <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+                        </a>
+                        
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundSummarySumJednostek)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundSummaryAvgPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundSummaryMinPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundSummaryMaxPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem=>item.CurrentPrice)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+      
+    </div>
+</div>

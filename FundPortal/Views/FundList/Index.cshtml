@@ -1,0 +1,62 @@
+﻿@model IEnumerable<FundPortal.Models.FundsListViewModel>
+@{
+    ViewBag.Title = "Lista funduszy";
+}
+<div class="container">
+    <div class="page-header">
+        <h2>Lista funduszy</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FundListFundName)                
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model=>model.FundListFundSymbol)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FundListTypName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FundListTowarzystwoName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FundListCurrentPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataWyceny)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+            {
+                    <tr id="fundusze">
+                        <td>
+                            @Html.ActionLink(item.FundListFundName, "Details",   new {item.FundListFundID})
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FundListFundSymbol)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FundListTypName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FundListTowarzystwoName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FundListCurrentPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataWyceny)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

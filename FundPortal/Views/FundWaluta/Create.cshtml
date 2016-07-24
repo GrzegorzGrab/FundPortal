@@ -1,0 +1,61 @@
+﻿@model Repozytorium.Models.FundWaluta
+
+@{
+    ViewBag.Title = "Dodaj walutę";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Dodaj walutę</h2>
+</div>
+@if (TempData["istniejeTakiKodWaluty"] != null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["istniejeTakiKodWaluty"] </div>
+        @TempData["istniejeTakiKodWaluty"]
+}
+<div class="row">
+    <div class="col-md-2">
+        @{Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundWalutaKod, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FundWalutaKod)
+                        @Html.ValidationMessageFor(model => model.FundWalutaKod)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FundWalutaPelnaNazwa, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FundWalutaPelnaNazwa)
+                        @Html.ValidationMessageFor(model => model.FundWalutaPelnaNazwa)
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                        <input type="reset"  value="Anuluj" class="btn btn-default" />
+                        @Html.ActionLink("Powrót", "Index", new { }, new { @class="btn btn-default"})
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

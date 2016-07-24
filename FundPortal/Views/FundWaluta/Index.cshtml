@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Repozytorium.Models.FundWaluta>
+
+@{
+    ViewBag.Title = "Waluta-Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Lista walut</h2>
+</div>
+@if (TempData["kodZostalDodany"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["kodZostalDodany"]</div>
+}
+@if (TempData["WalutaEditSuccess"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["WalutaEditSuccess"]</div>
+}
+@if (TempData["WalutaDeleteSuccess"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["WalutaDeleteSuccess"]</div>
+}
+<div class="row">
+    <div class="col-md-2">
+        @{  Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundWalutaKod)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundWalutaPelnaNazwa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundWalutaDataDodania)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundWalutaKod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundWalutaPelnaNazwa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundWalutaDataDodania)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.FundWalutaID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.FundWalutaID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.FundWalutaID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

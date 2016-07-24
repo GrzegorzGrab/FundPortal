@@ -1,0 +1,212 @@
+﻿@model Repozytorium.Models.FundMessages
+@{
+    ViewBag.Title = "Stron główna";
+
+}
+
+@if (TempData["WiadomoscZostalaWyslana"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["WiadomoscZostalaWyslana"]</div>
+}
+
+    <!-- Header -->
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Witamy w naszym portalu!</div>
+            <div class="intro-heading">Portal poświęcony funduszom inwestycyjnym</div>
+            <a href="#contact" class="page-scroll btn btn-xl">Zostaw wiadomość</a>
+        </div>
+    </div>
+</header>
+
+
+<!--Information about site-->
+<section id="informationAboutSite" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Portal poświęcony funduszom inwestycyjnym</h2>
+                <h3 class="section-subheading text-muted">Wszystkie najważniejsze informacje o funduszach inwestycyjnych zebrane w jednym miejscu</h3>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Wiadomości</h4>
+                <p class="text-muted">Najnowsze, najważniesze wiadomości ze świata funduszy inwestycyjnych</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Notowania</h4>
+                <p class="text-muted">Bieżące i historyczne notowania funduszy inwestycyjnych</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Analizy</h4>
+                <p class="text-muted">Analizy dotyczące funduszy inwestycyjnych</p>
+            </div>
+        </div>
+    </div>
+</section> <!--Koniec sekcji informationAboutSite-->
+
+<!--About funds-->
+<section id="aboutFunds"class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-12">
+                <div class="panel panel-default">
+                    <h2>Pienieżne</h2>
+                    <p>
+                        Fundusze inwestycyjne o najniższym poziomie ryzyka, których celem jest ochrona realnej wartości zainwestowanych środków.
+                        Aktywa funduszy lokowane są w krótko terminowe papiery dłużne, takie jak bony skarbowe, certyfikaty depozytowe,
+                        czy obligacje o terminie zapadalności do 1 roku. Stanowią one konkurencję do depozytów bankowych,
+                        przy czym ich zaletą jest wysoka płynność inwestycji umożliwiająca natychmiastowe wycofanie środków bez utraty uzyskanych korzyści.
+                        Wartości tytułów uczestnictwa powinny nieznacznie wzrastać w każdym dniu wyceny.
+                        Stopień ryzyka: bardzo niski.
+                    </p>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
+                            <span class="sr-only">10% Complete (success)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-12">
+                <div class="panel panel-default">
+                    <h2>Obligacji</h2>
+                    <p>
+                        Fundusze inwestycyjne o najniższym poziomie ryzyka, których celem jest ochrona realnej wartości zainwestowanych środków.
+                        Aktywa funduszy lokowane są w krótko terminowe papiery dłużne, takie jak bony skarbowe, certyfikaty depozytowe,
+                        czy obligacje o terminie zapadalności do 1 roku. Stanowią one konkurencję do depozytów bankowych,
+                        przy czym ich zaletą jest wysoka płynność inwestycji umożliwiająca natychmiastowe wycofanie środków bez utraty uzyskanych korzyści.
+                        Wartości tytułów uczestnictwa powinny nieznacznie wzrastać w każdym dniu wyceny.
+                        Stopień ryzyka: niski.
+                    </p>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                            <span class="sr-only">20% Complete (success)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-lg-12">
+                <div class="panel panel-default">
+                    <h2>Stablinego Wzrostu</h2>
+                    <p>
+                        Fundusze mieszane, których aktywa inwestowane są częściowo w akcje,
+                        których celem jest generowanie ponadprzeciętnych dochodów oraz w dłużne papiery wartościowe mające dawać stabilny przyrost wartości tytułów uczestnictwa.
+                        Zaangażowanie w akcje nie powinno przekraczać 30-40% aktywów. Fundusze te dążą do długoterminowego wzrostu kapitału przy umiarkowanym poziomie ryzyka.
+                        Oznacza to, że potencjał do generowania zysków z tych funduszy, w porównaniu do funduszy zrównoważonych oraz funduszy akcyjnych jest znacznie mniejszy.
+                        Stopień ryzyka: średni.
+                    </p>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                            <span class="sr-only">40% Complete (warning)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-lg-12">
+                <div class="panel panel-default">
+                    <h2>Zrównoważone</h2>
+                    <p>
+                        Fundusze należące do grupy funduszy mieszanych o wyższym poziomie ryzyka względem funduszy stabilnego wzrostu,
+                        wynikającym ze zwiększonego zaangażowania w akcje (do 60-70% aktywów).
+                        Fundusze te dążą do długoterminowego wzrostu kapitału przy umiarkowanym poziomie ryzyka,
+                        przy czym zwiększone zaangażowanie w akcje stwarza potencjał do wyższych stóp zwrotu w okresach hossy,
+                        ale i towarzyszy im wzrost ryzyka utraty wartości części akcyjnej portfela w okresach gorszej koniunktury giełdowej.
+                        Zmiany wartości tytułów uczestnictwa cechują się podwyższoną zmiennością względem funduszy stabilnego wzrostu,
+                        jednak nie tak wysoką, jak w przypadku funduszy akcyjnych.
+                        Stopień ryzyka: wysoki.
+                    </p>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                            <span class="sr-only">60% Complete (warning)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-lg-12">
+                <div class="panel panel-default">
+                    <h2>Akcyjne</h2>
+                    <p>
+                        Fundusz inwestycyjny o największym potencjale do generowania wysokich stóp zwrotu i jednocześnie najwyższym poziomie ryzyka.
+                        Fundusze te dążą do uzyskania ponadprzeciętnych stóp zwrotu w długim terminie poprzez lokowanie do 100% aktywów w akcje.
+                        W okresach hossy mogą generować stopy zwrotu znacznie przekraczające oprocentowanie depozytów bankowych,
+                        natomiast w okresach gorszej koniunktury giełdowej mogą generować częściową stratę zainwestowanych środków.
+                        Wysoki poziom ryzyka spowodowany jest możliwością znacznych wahań wartości tytułów uczestnictwa w związku ze zmianą wartości portfela akcji.
+                        Stopień ryzyka: bardzo wysoki.
+                    </p>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                            <span class="sr-only">80% Complete (danger)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--Koniec sekcji about funds-->
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Wyślij wiadomość do nas!</h2>
+                <h3 class="section-subheading text-muted">Dziękujemy za wszelkie uwagi dotyczące naszego serwisu!</h3>
+            </div>
+        </div>
+        <!--GG implementacja formularza dodaj wiadomość-->
+        <div class="row">
+            <div class="col-lg-12">
+                @using (Html.BeginForm("Create", "Home"))
+                {
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.UsernName, new { @class = "form-control", @placeholder = "Your Name*", @required=true})
+                                @Html.ValidationMessageFor(model=>model.UsernName)
+                            </div>
+                           
+                            <div class="form-group">
+                                @Html.TextBoxFor(model=>model.UserEmail, new { @class = "form-control", @placeholder = "Your Email*", @required=true })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.TextAreaFor(model=>model.Message , new { @class="form-control", @placeholder="Your Message*", @required=true})
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <div id="success"></div>
+                        <button type="submit" class="btn btn-xl">Wyślij wiadomość</button>
+                    </div>
+                }
+            </div>     
+        </div>
+        <!--GG koniec formularza-->
+    </div>
+</section><!--end of contact session-->
+
+
+
+<div class="jumbotron">
+    <h1>Grzegorz Grabowski</h1>
+    <p class="lead">Portal zrealizowany na potrzeby pracy inżynierskiej</p>
+    <p><a href="~/Home/About" class="btn btn-primary btn-large">O Autorze &raquo;</a></p>
+</div>
+
+

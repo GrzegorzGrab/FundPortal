@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>cldrjs</id>
+    <version>0.4.1</version>
+    <authors>Rafael Xavier de Souza</authors>
+    <owners>Rafael Xavier de Souza</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/rxaviers/cldrjs</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Simple CLDR API</description>
+    <tags>utility globalization internationalization multilingualization localization g11n i18n m17n L10n localize locale cldr json inheritance compile</tags>
+  </metadata>
+</package>

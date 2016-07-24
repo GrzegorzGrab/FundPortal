@@ -1,0 +1,47 @@
+﻿@model Repozytorium.Models.FundWaluta
+
+@{
+    ViewBag.Title = Model.FundWalutaKod + "-szczegóły";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Szczegóły waluty</h2>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        @{Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FundWalutaKod)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FundWalutaKod)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FundWalutaPelnaNazwa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FundWalutaPelnaNazwa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FundWalutaDataDodania)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FundWalutaDataDodania)
+            </dd>
+        </dl>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.FundWalutaID },new { @class = "btn btn-default" }) 
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-default" })
+        </p>
+    </div>
+</div>
+

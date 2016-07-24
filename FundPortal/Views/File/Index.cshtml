@@ -1,0 +1,31 @@
+﻿@model FundPortal.Models.FileViewModel
+@{
+    ViewBag.Title = "Dodaj plik";
+}
+
+<div class="page-header">
+    <h2>Dodaj plik</h2>
+</div>
+
+@if(TempData["NieWybranoPliku"]!= null)
+{
+    <div class="alert alert-danger">@TempData["NieWybranoPliku"]</div>
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div>
+                    @Html.LabelFor(x => x.File)
+                    @Html.TextBoxFor(x => x.File, new { type = "file" })
+                    @Html.ValidationMessageFor(x => x.File)
+                    @Html.HiddenFor(x=>x.FundId)
+                </div>
+                <button type="submit" class="btn btn-default">Upload File</button>
+                @Html.ActionLink("Powrót",null,"Fund",new { }, new { @class = "btn btn-default" })
+            }
+        </div>
+    </div>
+</div>
+
