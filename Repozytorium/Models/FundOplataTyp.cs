@@ -13,7 +13,7 @@ namespace Repozytorium.Models
 
         [Required(ErrorMessage="Proszę podać nazwę opłaty")]
         [Display(Name ="Nazwa opłaty")]
-        [Index(IsUnique =true)]
+        //[Index(IsUnique =true)]
         [MaxLength(100, ErrorMessage = "Kod waluty nie może być dłuższy niż 100 znaki")]
         public string FundOplataTypNazwa { get; set; }
 

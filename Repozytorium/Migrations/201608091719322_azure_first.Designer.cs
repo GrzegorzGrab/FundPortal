@@ -7,13 +7,13 @@ namespace Repozytorium.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class messages_v2 : IMigrationMetadata
+    public sealed partial class azure_first : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(messages_v2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(azure_first));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601060954076_messages_v2"; }
+            get { return "201608091719322_azure_first"; }
         }
         
         string IMigrationMetadata.Source
