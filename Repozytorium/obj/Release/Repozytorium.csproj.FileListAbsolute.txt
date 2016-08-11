@@ -27,3 +27,4 @@ C:\Users\Cezet-user\Documents\Visual Studio 2015\Projects\FundPortal\Repozytoriu
 C:\Users\Cezet-user\Documents\Visual Studio 2015\Projects\FundPortal\Repozytorium\obj\Release\Repozytorium.csproj.GenerateResource.Cache
 C:\Users\Cezet-user\Documents\Visual Studio 2015\Projects\FundPortal\Repozytorium\obj\Release\Repozytorium.dll
 C:\Users\Cezet-user\Documents\Visual Studio 2015\Projects\FundPortal\Repozytorium\obj\Release\Repozytorium.pdb
+C:\Users\Cezet-user\Documents\Visual Studio 2015\Projects\FundPortal\Repozytorium\obj\Release\Repozytorium.csprojResolveAssemblyReference.cache
