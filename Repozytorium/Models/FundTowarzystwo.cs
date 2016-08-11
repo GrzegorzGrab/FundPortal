@@ -14,7 +14,7 @@ namespace Repozytorium.Models
         [Required(ErrorMessage ="Proszę podać nazwę towarzystwa")]
         public string FundTowarzystwoNazwa { get; set; }
 
-        [Display(Name ="Adres Towarzystwa")]
+        [Display(Name ="Adres URL Towarzystwa")]
         public string FundTowarzystwoAdresUrl { get; set; }
 
         [Display(Name="Data dodania towarzystwa")]

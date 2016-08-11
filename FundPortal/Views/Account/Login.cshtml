@@ -13,6 +13,9 @@
                 @Html.AntiForgeryToken()
                 <h4>Zaloguj się do serwisu</h4>
                 <hr />
+                <h4>Default password for admin user is:</h4>
+                <h5>password</h5>
+                <hr />
                 @Html.ValidationSummary(true)
                 <div class="form-group">
                     @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })

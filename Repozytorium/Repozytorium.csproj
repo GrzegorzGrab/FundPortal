@@ -110,9 +110,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201608091719322_azure_first.cs" />
-    <Compile Include="Migrations\201608091719322_azure_first.Designer.cs">
-      <DependentUpon>201608091719322_azure_first.cs</DependentUpon>
+    <Compile Include="Migrations\201608091736072_zmiany_dla_azure.cs" />
+    <Compile Include="Migrations\201608091736072_zmiany_dla_azure.Designer.cs">
+      <DependentUpon>201608091736072_zmiany_dla_azure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608091834179_azure1.cs" />
+    <Compile Include="Migrations\201608091834179_azure1.Designer.cs">
+      <DependentUpon>201608091834179_azure1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\FundFile.cs" />
@@ -133,8 +137,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608091719322_azure_first.resx">
-      <DependentUpon>201608091719322_azure_first.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608091736072_zmiany_dla_azure.resx">
+      <DependentUpon>201608091736072_zmiany_dla_azure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608091834179_azure1.resx">
+      <DependentUpon>201608091834179_azure1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

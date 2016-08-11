@@ -24,7 +24,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.FundTowarzystwoNazwa, new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.FundTowarzystwoNazwa)
+                        @Html.EditorFor(model => model.FundTowarzystwoNazwa, new { htmlattributes = new { @class = "form-control", placeholder = "Nazwa Towarzystwa" } })
                         @Html.ValidationMessageFor(model => model.FundTowarzystwoNazwa)
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.FundTowarzystwoAdresUrl, new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.FundTowarzystwoAdresUrl)
+                        @Html.EditorFor(model => model.FundTowarzystwoAdresUrl, new { htmlattributes = new { @class = "form-control", placeholder = "Adres URL Towarzystwa" } })
                         @Html.ValidationMessageFor(model => model.FundTowarzystwoAdresUrl)
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.FundTowarzystwoDataDodania, new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.FundTowarzystwoDataDodania)
+                        @Html.EditorFor(model => model.FundTowarzystwoDataDodania, new { htmlattributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.FundTowarzystwoDataDodania)
                     </div>
                 </div>
@@ -48,6 +48,7 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Create" class="btn btn-default" />
+                        <input type="reset" value="Anuluj" class="btn btn-default" />
                         @Html.ActionLink("Powrót do listy", "Index", new { }, new { @class = "btn btn-default" })
                     </div>
                 </div>

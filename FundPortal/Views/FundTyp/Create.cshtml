@@ -23,7 +23,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.FundTypName, new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.FundTypName)
+                        @Html.EditorFor(model => model.FundTypName , new { htmlattributes = new { @class = "form-control", placeholder = "Typ funduszu" } })
                         @Html.ValidationMessageFor(model => model.FundTypName)
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.FundTypOpis, new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.FundTypOpis)
+                        @Html.EditorFor(model => model.FundTypOpis, new { htmlattributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.FundTypOpis)
                     </div>
                 </div>
@@ -39,14 +39,13 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Create" class="btn btn-default" />
+                        <input type="reset" value="Anuluj" class="btn btn-default" />
+                        @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-default" })
                     </div>
                 </div>
             </div>
         }
     </div>
-</div>
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
