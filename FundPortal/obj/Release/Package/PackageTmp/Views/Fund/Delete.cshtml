@@ -1,0 +1,50 @@
+﻿@model Repozytorium.Models.Fund
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<div class="page-header">
+    <h2>Usunięcie funduszu</h2>
+</div>
+
+
+    <div class="row">
+        <div class="col-md-2">
+            @{  Html.RenderAction("AdminMenu", "AdminNav");}
+        </div>
+        <div class="col-md-10">
+            <h3>Czy chcesz usunąć fundusz: @Model.FundName?</h3>
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FundName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FundName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FundTypID)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FundTypID)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+            {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default" /> 
+                        @Html.ActionLink("Back to List", "Index", new { },new { @class = "btn btn-default" })
+                    </div>
+                }
+            </div>
+        </div>
+</div>

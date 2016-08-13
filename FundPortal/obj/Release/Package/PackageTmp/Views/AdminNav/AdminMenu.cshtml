@@ -1,0 +1,70 @@
+﻿<div>
+    <ul class="nav nav-pills nav-stacked">
+
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Fundusze
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" id="admin"> 
+                <li role="presentation">@Html.ActionLink("Lista Funduszy", "Index", "Fund")</li>
+                <li role="presentation">@Html.ActionLink("Dodaj nowy fundusz", "Create", "Fund")</li>
+            </ul>
+        </li>
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Typy funduszy
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" id="admin">
+                <li role="presentation">@Html.ActionLink("Lista typów funduszy", "Index", "FundTyp")</li>
+                <li role="presentation">@Html.ActionLink("Dodaj nowy typ funduszu", "Create", "FundTyp")</li>
+            </ul>
+        </li>
+
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Towarzystwa
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" id="admin">
+                <li role="presentation">@Html.ActionLink("Lista towarzystw", "Index", "FundTowarzystwo")</li>
+                <li role="presentation">@Html.ActionLink("Dodaj nowe towarzystwo", "Create", "FundTowarzystwo")</li>
+             </ul>
+        </li>
+       <li role="presentation" class="dropdown">
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+               Waluty
+               <span class="caret"></span>
+           </a>
+           <ul class="dropdown-menu" id="admin">
+               <li role="presentation">@Html.ActionLink("Lista walut","Index","FundWaluta")</li>
+               <li role="presentation">@Html.ActionLink("Dodaj nową walutę", "Create", "FundWaluta")</li>
+           </ul>
+       </li>
+       <li role="presentation" class="dropdown">
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+               Wycena <span class="caret"></span>
+           </a>
+           <ul class="dropdown-menu" id="admin">
+               <li role="presentation">@Html.ActionLink("Wycena", "Index", "FundWycena")</li>
+               <li role="presentation">@Html.ActionLink("Dodaj nową wycenę", "Create", "FundWycena")</li>
+               <li role="presentation">@Html.ActionLink("Import pliku", "UploadFile", "FundWycena")</li>
+           </ul>
+       </li>
+        <li role="presentation"class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown"href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Rodzaje Opłat
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" id="admin">
+                <li role="presentation">@Html.ActionLink("Typy opłat","Index","FundOplataTyps")</li>
+                <li role="presentation">@Html.ActionLink("Dodaj nową opłatę", "Create", "FundOplataTyps")</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+    
+     

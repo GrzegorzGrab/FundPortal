@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Repozytorium.Models.FundOplataTyp>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Lista opłat</h2>
+</div>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Success"]</div>
+}
+@if (TempData["NieMoznaUsunacOplaty"]!=null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["NieMoznaUsunacOplaty"]</div>
+}
+@if (TempData["OplataZostalaUsunieta"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["OplataZostalaUsunieta"]</div>
+}
+@if (TempData["OplataEdited"] != null)
+{
+    <div class="alert alert-success"role="alert">@TempData["OplataEdited"]</div>
+}
+<div class="row">
+    <div class="col-md-2">
+        @{Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundOplataTypNazwa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundOplataTypOpis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundOplataTypDataDodania)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundOplataTypNazwa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundOplataTypOpis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundOplataTypDataDodania)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.FundOplataTypID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.FundOplataTypID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.FundOplataTypID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

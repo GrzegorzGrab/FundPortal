@@ -1,0 +1,118 @@
+﻿@model Repozytorium.Models.Fund
+
+@{
+    ViewBag.Title = Model.FundName + "-szczegóły";
+}
+
+<div class="page-header">
+    <h2>Szczegóły funduszu</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        @{  Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="container">
+        <div class="col-md-10">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FundName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FundName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FundTyp.FundTypName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FundTyp.FundTypName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FundTowarzystwo.FundTowarzystwoNazwa)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FundTowarzystwo.FundTowarzystwoNazwa)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FundWaluta.FundWalutaKod)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FundWaluta.FundWalutaKod)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FundSymbol)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FundSymbol)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FundZarzadzajacy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FundZarzadzajacy)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FundDataUruchomienia)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FundDataUruchomienia)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FundPierwszajWplata)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FundPierwszajWplata)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FundNastepnaWplata)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FundNastepnaWplata)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FundPolityka)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FundPolityka)
+                </dd>
+
+            </dl>
+            @if (Model.FundFileID != null)
+            {
+                <div class="row">            
+
+                        <a href="@Url.Action("FileDownload", "File", new { id = Model.FundFileID })" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                        </a>
+
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.FundID }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-default" })
+                    @if (Model.FundFileID == null)
+                    {
+                        @Html.ActionLink("Dodaj plik", "Index", "File", new { fundId = Model.FundID }, new { @class = "btn btn-default" })
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

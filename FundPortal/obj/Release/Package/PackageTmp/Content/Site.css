@@ -1,0 +1,726 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 480px; /*GG zmienione na potrzeby message w sekcji contact*/
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/*GG: Styl dodany w celu skorzystania z jQuery data picker*/
+
+/*!
+ * Datepicker for Bootstrap
+ *
+ * Copyright 2012 Stefan Petre
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+.datepicker {
+    top: 0;
+    left: 0;
+    padding: 4px;
+    margin-top: 1px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    /*.dow {
+    border-top: 1px solid #ddd !important;
+  }*/
+}
+
+    .datepicker:before {
+        content: '';
+        display: inline-block;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #ccc;
+        border-bottom-color: rgba(0, 0, 0, 0.2);
+        position: absolute;
+        top: -7px;
+        left: 6px;
+    }
+
+    .datepicker:after {
+        content: '';
+        display: inline-block;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid #ffffff;
+        position: absolute;
+        top: -6px;
+        left: 7px;
+    }
+
+    .datepicker > div {
+        display: none;
+    }
+
+    .datepicker table {
+        width: 100%;
+        margin: 0;
+    }
+
+    .datepicker td,
+    .datepicker th {
+        text-align: center;
+        width: 20px;
+        height: 20px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+        .datepicker td.day:hover {
+            background: #eeeeee;
+            cursor: pointer;
+        }
+
+        .datepicker td.day.disabled {
+            color: #eeeeee;
+        }
+
+        .datepicker td.old,
+        .datepicker td.new {
+            color: #999999;
+        }
+
+        .datepicker td.active,
+        .datepicker td.active:hover {
+            color: #ffffff;
+            background-color: #006dcc;
+            background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+            background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+            background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+            background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+            background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+            background-repeat: repeat-x;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+            border-color: #0044cc #0044cc #002a80;
+            border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+            *background-color: #0044cc;
+            /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+            filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+            color: #fff;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        }
+
+            .datepicker td.active:hover,
+            .datepicker td.active:hover:hover,
+            .datepicker td.active:focus,
+            .datepicker td.active:hover:focus,
+            .datepicker td.active:active,
+            .datepicker td.active:hover:active,
+            .datepicker td.active.active,
+            .datepicker td.active:hover.active,
+            .datepicker td.active.disabled,
+            .datepicker td.active:hover.disabled,
+            .datepicker td.active[disabled],
+            .datepicker td.active:hover[disabled] {
+                color: #ffffff;
+                background-color: #0044cc;
+                *background-color: #003bb3;
+            }
+
+                .datepicker td.active:active,
+                .datepicker td.active:hover:active,
+                .datepicker td.active.active,
+                .datepicker td.active:hover.active {
+                    background-color: #003399 \9;
+                }
+
+        .datepicker td span {
+            display: block;
+            width: 47px;
+            height: 54px;
+            line-height: 54px;
+            float: left;
+            margin: 2px;
+            cursor: pointer;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+
+            .datepicker td span:hover {
+                background: #eeeeee;
+            }
+
+            .datepicker td span.active {
+                color: #ffffff;
+                background-color: #006dcc;
+                background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+                background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+                background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+                background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+                background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+                background-repeat: repeat-x;
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+                border-color: #0044cc #0044cc #002a80;
+                border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+                *background-color: #0044cc;
+                /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+                filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+                color: #fff;
+                text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+            }
+
+                .datepicker td span.active:hover,
+                .datepicker td span.active:focus,
+                .datepicker td span.active:active,
+                .datepicker td span.active.active,
+                .datepicker td span.active.disabled,
+                .datepicker td span.active[disabled] {
+                    color: #ffffff;
+                    background-color: #0044cc;
+                    *background-color: #003bb3;
+                }
+
+                .datepicker td span.active:active,
+                .datepicker td span.active.active {
+                    background-color: #003399 \9;
+                }
+
+            .datepicker td span.old {
+                color: #999999;
+            }
+
+        .datepicker th.switch {
+            width: 145px;
+        }
+
+        .datepicker th.next,
+        .datepicker th.prev {
+            font-size: 21px;
+        }
+
+    .datepicker thead tr:first-child th {
+        cursor: pointer;
+    }
+
+        .datepicker thead tr:first-child th:hover {
+            background: #eeeeee;
+        }
+
+.input-append.date .add-on i,
+.input-prepend.date .add-on i {
+    display: block;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+/*GG: koniec stylu dla jQuery DataPicker*/
+
+/*
+    GG: styl dla strony głównej 
+*/
+
+.btn-primary {
+    color: #fff;
+    background-color: #fed136;
+    border-color: #fed136;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+        color: #fff;
+        background-color: #fec503;
+        border-color: #f6bf01;
+    }
+
+    .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+        background-image: none;
+    }
+
+    .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active {
+        background-color: #fed136;
+        border-color: #fed136;
+    }
+
+    .btn-primary .badge {
+        color: #fed136;
+        background-color: #fff;
+    }
+
+.btn-xl {
+    color: #fff;
+    background-color: #fed136;
+    border-color: #fed136;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 3px;
+    font-size: 18px;
+    padding: 20px 40px;
+}
+
+    .btn-xl:hover, .btn-xl:focus, .btn-xl:active, .btn-xl.active, .open .dropdown-toggle.btn-xl {
+        color: #fff;
+        background-color: #fec503;
+        border-color: #f6bf01;
+    }
+
+    .btn-xl:active, .btn-xl.active, .open .dropdown-toggle.btn-xl {
+        background-image: none;
+    }
+
+    .btn-xl.disabled, .btn-xl[disabled], fieldset[disabled] .btn-xl, .btn-xl.disabled:hover, .btn-xl[disabled]:hover, fieldset[disabled] .btn-xl:hover, .btn-xl.disabled:focus, .btn-xl[disabled]:focus, fieldset[disabled] .btn-xl:focus, .btn-xl.disabled:active, .btn-xl[disabled]:active, fieldset[disabled] .btn-xl:active, .btn-xl.disabled.active, .btn-xl[disabled].active, fieldset[disabled] .btn-xl.active {
+        background-color: #fed136;
+        border-color: #fed136;
+    }
+
+    .btn-xl .badge {
+        color: #fed136;
+        background-color: #fff;
+    }
+
+.navbar-default {
+    background-color: #222;
+    border-color: transparent;
+}
+
+    .navbar-default .navbar-brand {
+        color: #fed136;
+        font-family: 'Sigmar One', cursive;
+    }
+
+        .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus, . navbar-default .navbar-brand:active, .navbar-default .navbar-brand.active {
+            color: #fec503;
+        }
+
+    .navbar-default .navbar-collapse {
+        border-color: rgba(255,255,255,.02);
+    }
+
+    .navbar-default .navbar-toggle {
+        background-color: #fed136;
+        border-color: #fed136;
+    }
+
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: #fff;
+        }
+
+        .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+            background-color: #fed136;
+        }
+
+    .navbar-default .nav li a {
+        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 2px;
+        color: #fed136;
+    }
+
+        .navbar-default .nav li a:hover, .navbar-default .nav li a:focus {
+            color: #fed136;
+            outline: 0;
+        }
+
+    .navbar-default .navbar-nav > .active > a {
+        border-radius: 0;
+        color: #fff;
+        background-color: #fed136;
+    }
+
+        .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+            color: #fff;
+            background-color: #fec503;
+        }
+
+.bg-light-gray {
+    background-color: #FBFBFB;
+}
+
+@media (min-width:768px) {
+    .navbar-default {
+        background-color: black;
+        padding: 4px 0;
+        -webkit-transition: padding .3s;
+        -moz-transition: padding .3s;
+        transition: padding .3s;
+        border: 0;
+    }
+
+        .navbar-default .navbar-brand {
+            font-size: 2em;
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            transition: all .3s;
+        }
+
+        .navbar-default .navbar-nav > .active > a {
+            border-radius: 3px;
+        }
+
+        .navbar-default.navbar-shrink {
+            background-color: #000;
+            padding: 10px 0;
+        }
+
+            .navbar-default.navbar-shrink .navbar-brand {
+                font-size: 1.5em;
+            }
+}
+
+header {
+    background-image: url(img/Nyse_1.jpg);
+    background-repeat: none;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    color: #fed136; /*fff;*/
+}
+
+    header .intro-text {
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+        header .intro-text .intro-lead-in {
+            font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-style: italic;
+            font-size: 22px;
+            line-height: 22px;
+            margin-bottom: 25px;
+        }
+
+        header .intro-text .intro-heading {
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 50px;
+            line-height: 50px;
+            margin-bottom: 25px;
+        }
+
+@media (min-width:768px) {
+    header .intro-text {
+        padding-top: 300px;
+        padding-bottom: 200px;
+    }
+
+        header .intro-text .intro-lead-in {
+            font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-style: italic;
+            font-size: 40px;
+            line-height: 40px;
+            margin-bottom: 25px;
+        }
+
+        header .intro-text .intro-heading {
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 45px;
+            line-height: 75px;
+            margin-bottom: 50px;
+        }
+}
+
+section {
+    padding: 100px 0;
+}
+
+    section h2.section-heading {
+        font-size: 40px;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    section h3.section-subheading {
+        font-size: 16px;
+        font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+        text-transform: none;
+        font-style: italic;
+        font-weight: 400;
+        margin-bottom: 75px;
+    }
+
+    section#contact {
+        background-color: #222;
+        background-image: url(img/contact.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+        section#contact .section-heading {
+            color: #fff;
+        }
+
+        section#contact .form-group {
+            margin-bottom: 25px;
+        }
+
+            section#contact .form-group input, section#contact .form-group textarea {
+                padding: 20px;
+            }
+
+                section#contact .form-group input.form-control {
+                    height: auto;
+                    width: 100%;
+                }
+
+                section#contact .form-group textarea.form-control {
+                    height: 236px;
+                }
+
+        section#contact .form-control:focus {
+            border-color: #fed136;
+            box-shadow: none;
+        }
+
+        section#contact ::-webkit-input-placeholder {
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #bbb;
+        }
+
+        section#contact :-moz-placeholder {
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #bbb;
+        }
+
+        section#contact ::-moz-placeholder {
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #bbb;
+        }
+
+        section#contact :-ms-input-placeholder {
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #bbb;
+        }
+
+        section#contact .text-danger {
+            color: #e74c3c;
+        }
+
+
+
+/*
+    GG: koniec stylu dla głównej strony
+*/
+
+
+/*
+    GG: styl dla dropdown menu header
+*/
+
+.navbar-default .navbar-nav > .open > a:focus{
+    background-color: #333333;
+}
+
+/*
+    GG: styl dla hover w nawigacji
+*/
+ .nav > li > a:hover{
+     background-color:#95d3fb;
+ }
+
+ .table tbody > tr:hover{
+     background-color:#e9f7fb;
+ }
+
+ .btn-toolbar{
+     margin-top:50px;
+ }
+
+
+ /*
+     GG: styl do obsłużenia input dla pliku
+ */
+ .btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+.btn-primary{
+    background-color:#428bca;
+    border-color:#428bca;
+}
+
+.graph-gg{
+    padding-top:50px;
+}
+
+/*
+    GG: styl potrzebny do strony About.cshtml
+*/
+
+#page-wrap  * {
+        margin: 0;
+        padding: 0;
+    }
+
+   #page-wrap body {
+        font: 16px Helvetica, Sans-Serif;
+        line-height: 24px;
+        background: url(images/noise.jpg);
+    }
+
+    #page-wrap .clear {
+        clear: both;
+    }
+
+    #page-wrap {
+        width: 800px;
+        margin: 40px auto 60px;
+    }
+
+    #page-wrap #pic {
+        float: right;
+        margin: -20px 0px 10px 10px;
+        height: 150px;
+        width: 15   0px;
+    }
+
+   #page-wrap h1 {
+        margin: 0 0 16px 0;
+        padding: 0 0 16px 0;
+        font-size: 42px;
+        font-weight: bold;
+        letter-spacing: -2px;
+        border-bottom: 1px solid #999;
+    }
+
+    #page-wrap h2 {
+        font-size: 20px;
+        margin: 0 0 6px 0;
+        position: relative;
+    }
+
+      #page-wrap  h2 span {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-style: italic;
+            font-family: Georgia, Serif;
+            font-size: 16px;
+            color: #999;
+            font-weight: normal;
+        }
+
+    #page-wrap p {
+        margin: 0 0 16px 0;
+    }
+
+    #page-wrap a {
+        color: #999;
+        text-decoration: none;
+        border-bottom: 1px dotted #999;
+    }
+
+      #page-wrap  a:hover {
+            border-bottom-style: solid;
+            color: black;
+        }
+
+   #page-wrap ul {
+        margin: 0 0 32px 17px;
+    }
+
+  #page-wrap  #objective {
+        width: 500px;
+        float: left;
+    }
+
+       #page-wrap #objective p {
+            font-family: Georgia, Serif;
+            font-style: italic;
+            color: #666;
+        }
+
+    #page-wrap dt {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: right;
+        padding: 0 26px 0 0;
+        width: 150px;
+        float: left;
+        height: 100px;
+        border-right: 1px solid #999;
+    }
+
+    #page-wrap dd {
+        width: 600px;
+        float: right;
+    }
+
+     #page-wrap   dd.clear {
+            float: none;
+            margin: 0;
+            height: 15px;
+        }
+
+     .dropdown-menu{
+         background-color:black;
+     }
+
+     #admin {
+         background-color:#bae7f6;
+     }

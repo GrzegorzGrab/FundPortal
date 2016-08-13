@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Repozytorium.Models.FundFile>
+@{
+    ViewBag.Title = "DownloadFile";
+}
+
+<h2>DownloadFile</h2>
+
+<p>
+    @Html.ActionLink("Upload New", "Index")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model=>model.FundFileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=>model.FundContent)
+        </th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem=>item.FundFileName)
+            </td>
+            <td>
+                @Html.ActionLink("DownloadFile","FileDownload", new { id=item.FundFileID})
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Repozytorium.Models.Fund>
+
+@{
+    ViewBag.Title = "Fundusze-Index";
+}
+
+<div class="page-header">
+    <h2>Lista funduszy</h2>
+</div>
+@if (TempData["fundZostalDodany"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["fundZostalDodany"]</div>
+}
+@if (TempData["DeleteFailed"] != null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["DeleteFailed"]</div>
+}
+@if (TempData["FundDeleted"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["FundDeleted"] </div>
+}
+<div class="row">
+    <div class="col-md-2">
+        @{  Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.FundSymbol)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundTyp.FundTypName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundTowarzystwo.FundTowarzystwoNazwa)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+{
+    <tr id="fundusze">
+        <td>
+            @Html.DisplayFor(modelItem => item.FundName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>item.FundSymbol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FundTyp.FundTypName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FundTowarzystwo.FundTowarzystwoNazwa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.FundID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.FundID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.FundID })
+        </td>
+    </tr>
+}
+
+        </table>
+    </div>
+</div>
+
+

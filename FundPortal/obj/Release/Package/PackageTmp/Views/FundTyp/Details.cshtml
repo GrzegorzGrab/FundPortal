@@ -1,0 +1,40 @@
+﻿@model Repozytorium.Models.FundTyp
+
+@{
+    ViewBag.Title = Model.FundTypName + "-szczegóły";
+}
+
+<div class="page-header">
+    <h2>Szczegóły typu funduszu</h2>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        @{  Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FundTypName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FundTypName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FundTypOpis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FundTypOpis)
+            </dd>
+        </dl>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.FundTypID }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Powrót do listy", "Index", new { }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    
+</div>

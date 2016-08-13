@@ -1,0 +1,47 @@
+﻿@model Repozytorium.Models.FundOplataTyp
+
+@{
+    ViewBag.Title = Model.FundOplataTypNazwa + "-szczegóły";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Szczegóły</h2>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        @{ Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FundOplataTypNazwa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FundOplataTypNazwa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FundOplataTypOpis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FundOplataTypOpis)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FundOplataTypDataDodania)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FundOplataTypDataDodania)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.FundOplataTypID }, new { @class = "btn btn-default" }) 
+        @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-default" })
+    </p>
+</div>

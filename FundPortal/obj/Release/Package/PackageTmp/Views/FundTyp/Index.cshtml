@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Repozytorium.Models.FundTyp>
+
+@{
+    ViewBag.Title = "Typ Funduszu - Index";
+}
+
+<div class="page-header">
+    <h2>Typy funduszy</h2>
+</div>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Success"]</div>
+}
+
+@if (TempData["Edit_Success"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Edit_Success"]</div>
+}
+@if (TempData["Delete_Success"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Delete_Success"]</div>
+}
+<div class="row">
+    <div class="col-md-2">
+        @{Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundTypName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundTypOpis)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundTypName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundTypOpis)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.FundTypID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.FundTypID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.FundTypID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

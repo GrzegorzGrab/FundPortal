@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Repozytorium.Models.FundTowarzystwo>
+
+@{
+    ViewBag.Title = "Fundusz-Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Lista towarzystw</h2>
+</div>
+@if(TempData["TowarzystwoDodanoSukces"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["TowarzystwoDodanoSukces"]</div>
+}
+
+@if (TempData["TowarzystwoEditSuccess"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["TowarzystwoEditSuccess"]</div>
+}
+
+
+@if (TempData["TowarzystwoDeleteSuccess"] !=null)
+{
+    <div class="alert alert-success" role="alert">@TempData["TowarzystwoDeleteSuccess"]</div>
+}
+<div class="row">
+    <div class="col-md-2">
+        @{ Html.RenderAction("AdminMenu", "AdminNav");}
+    </div>
+    <div class="col-md-10">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundTowarzystwoNazwa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundTowarzystwoDataDodania)
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundTowarzystwoNazwa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FundTowarzystwoDataDodania)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.FundTowarzystwoID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.FundTowarzystwoID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.FundTowarzystwoID })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

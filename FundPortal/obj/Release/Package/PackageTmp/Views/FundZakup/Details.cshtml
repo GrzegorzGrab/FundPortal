@@ -1,0 +1,59 @@
+﻿@model Repozytorium.Models.FundZakup
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-header">
+    <h2>Szczegóły zakupu</h2>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+        <div class="list-group">
+                <h4 class="list-group-item-heading">
+                    @Html.DisplayNameFor(model => model.Fund.FundName)
+                </h4>
+                <p class="list-group-item-text">
+                    @Html.DisplayFor(model => model.Fund.FundName)
+                </p>
+        </div>
+        <div class="list-group">
+            <h4 class="list-group-item-heading">
+                @Html.DisplayNameFor(model => model.FundZakupIlosc)
+            </h4>
+            <p class="list-group-item-text">
+                @Html.DisplayFor(model => model.FundZakupIlosc)
+            </p>
+        </div>
+        <div class="list-group">
+            <h4 class="list-group-item-heading">
+                @Html.DisplayNameFor(model => model.FundZakupCena)
+            </h4>
+            <p class="list-group-item-text">
+                @Html.DisplayFor(model => model.FundZakupCena)
+            </p>
+        </div>
+        <div class="list-group">
+            <h4 class="list-group-item-heading">
+                @Html.DisplayNameFor(model => model.FundZakupDataZakupu)
+            </h4>
+            <p class="list-group-item-text">
+                @Html.DisplayFor(model => model.FundZakupDataZakupu)
+            </p>
+        </div>
+        <div class="list-group">
+            <h4 class="list-group-item-heading">
+                @Html.DisplayNameFor(model => model.CurrentPrice)
+            </h4>
+            <p class="list-group-item-text">
+                @Html.DisplayFor(model => model.CurrentPrice)
+            </p>
+        </div>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.FundZakupID }, new { @class = "btn btn-default" }) 
+        @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-default" })
+    </div>
+</div>
+
